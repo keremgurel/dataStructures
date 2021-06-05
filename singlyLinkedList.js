@@ -39,6 +39,13 @@ class SinglyLinkedList {
         }
         return curr;
     }
+    shift() {
+        if(!head) return undefined;
+        var currHead = this.head;
+        this.head = currHead.next;
+        this.length--;
+        return currHead;
+    }
 }
 var list = new SinglyLinkedList();
 list.push("Hello");
