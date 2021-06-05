@@ -33,10 +33,16 @@ class SinglyLinkedList {
         this.tail = newTail;
         this.tail.next = null;
         this.length--;
+        if(this.length === 0) {
+            this.head = null;
+            this.tail = null;
+        }
         return curr;
     }
 }
 var list = new SinglyLinkedList();
 list.push("Hello");
+list.push("World");
+list.pop();
 
 
