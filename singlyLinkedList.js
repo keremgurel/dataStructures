@@ -44,6 +44,9 @@ class SinglyLinkedList {
         var currHead = this.head;
         this.head = currHead.next;
         this.length--;
+        if(this.length === 0) {
+            this.tail = null;
+        }
         return currHead;
     }
 }
