@@ -54,6 +54,20 @@ class BinarySearchTree {
         return found; // will be false if not there
         return curr;
     }
+    BFS() {
+        var node = this.root;
+        var data = [];
+        var queue = [];
+
+        queue.push(node);
+        while(queue.length) {
+            node = queue.shift();
+            data.push(node);
+            if(node.left) queue.push(node.left);
+            if(node.right) queue.push(node.right);
+        }
+        return data;
+    }
 }
 
 var tree = new BinarySearchTree();
