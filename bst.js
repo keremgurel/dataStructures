@@ -18,6 +18,7 @@ class BinarySearchTree {
         } else {
             var curr = this.root;
             while (true) {
+                if(value === curr.val) return undefined;
                 if(val <  curr.val) {
                     if(curr.left === null) {
                         curr.left = newNode;
@@ -35,6 +36,23 @@ class BinarySearchTree {
                 }
             }
         }
+    }
+    find(val) {
+        if(this.root === null) return undefined;
+        var curr = this.root;
+        var found = false;
+        while(curr && !found) {
+            if(val <  curr.val) {
+                curr = curr.left;
+            } else if(val > curr.val) {
+                curr = curr.right;
+            } else {
+                found = true;
+                return found;
+            }
+        }
+        return found; // will be false if not there
+        return curr;
     }
 }
 
