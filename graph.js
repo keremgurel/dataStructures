@@ -44,6 +44,26 @@ class Graph {
         dfs(start);
         return result;
     }
+    DFSIterative(start) {
+        const stack = [start];
+        const result = [];
+        const visited = {};
+        let currVertex;
+
+        visited[start] = true;
+        while(stack.length) {
+            currVertex = stack.pop();
+            result.push(currVertex);
+
+            this.adjacencyList[currVertex].forEach(neighbor => {
+                if(!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            });
+        }
+        return result;
+    }
 }
 
 g = new Graph();
