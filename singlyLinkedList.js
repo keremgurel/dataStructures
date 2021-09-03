@@ -11,8 +11,8 @@ class SinglyLinkedList {
         this.length = 0;
     }
     push(val) {
-        var newNode = new Node(val);
-        if(!this.head) {
+        let newNode = new Node(val);
+        if (!this.head) {
             this.head = newNode;
             this.tail = this.head
         } else {
@@ -23,35 +23,35 @@ class SinglyLinkedList {
         return this;
     }
     pop() {
-        if(!head) return undefined;
-        var curr = this.head;
-        var newTail = curr;
-        while(curr.next) {
+        if (!this.head) return undefined;
+        let curr = this.head;
+        let newTail = curr;
+        while (curr.next) {
             newTail = curr;
             curr = curr.next;
         }
         this.tail = newTail;
         this.tail.next = null;
         this.length--;
-        if(this.length === 0) {
+        if (this.length === 0) {
             this.head = null;
             this.tail = null;
         }
         return curr;
     }
     shift() {
-        if(!head) return undefined;
-        var currHead = this.head;
+        if (!head) return undefined;
+        let currHead = this.head;
         this.head = currHead.next;
         this.length--;
-        if(this.length === 0) {
+        if (this.length === 0) {
             this.tail = null;
         }
         return currHead;
     }
     unshift(val) {
-        var newNode = new Node(val);
-        if(!this.head) {
+        let newNode = new Node(val);
+        if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
         } else {
@@ -62,59 +62,59 @@ class SinglyLinkedList {
         return this;
     }
     get(index) {
-        if(index < 0 || index >= this.length) return undefined;
-        var counter = 0;
-        var curr = this.head;
-        while(counter !== index) {
+        if (index < 0 || index >= this.length) return undefined;
+        let counter = 0;
+        let curr = this.head;
+        while (counter !== index) {
             current = current.next;
             counter++;
         }
         return current;
     }
     set(index, val) {
-        var foundNode = this.get(index);
-        if(foundNode) {
+        let foundNode = this.get(index);
+        if (foundNode) {
             foundNode.val = val;
             return true;
         }
         return false;
     }
     insert(index, val) {
-        if(index < 0 || index > this.length) return false;
-        if(index === this.length) {
+        if (index < 0 || index > this.length) return false;
+        if (index === this.length) {
             this.push(val);
             return true;
         }
-        if(index === 0) {
+        if (index === 0) {
             this.unshift(val);
             return true;
         }
-        var newNode = new Node(val);
-        var prev = this.get(index-1);
-        var tmp = prev.next;
+        let newNode = new Node(val);
+        let prev = this.get(index - 1);
+        let tmp = prev.next;
         prev.next = newNode;
         newNode.next = tmp;
         this.length++;
         return true;
     }
     remove(index) {
-        if(index < 0 || index > this.length) return undefined;
-        if(index === 0) return this.shift();
-        if(index === this.length - 1) return this.pop();
-        var previousNode = this.get(index - 1);
-        var removed = previousNode.next;
+        if (index < 0 || index > this.length) return undefined;
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
+        let previousNode = this.get(index - 1);
+        let removed = previousNode.next;
         previousNode.next = removed.next;
         this.length--;
         return removed;
     }
     reverse() {
-        var node = this.head;
+        let node = this.head;
         this.head = this.tail;
         this.tail = node;
-        var prev = null;
-        var next;
+        let prev = null;
+        let next;
 
-        for(var i=0;i<this.length;i++) {
+        for (let i = 0; i < this.length; i++) {
             next = node.next;
             node.next = prev;
             prev = node;
@@ -123,7 +123,7 @@ class SinglyLinkedList {
         return this;
     }
 }
-var list = new SinglyLinkedList();
+let list = new SinglyLinkedList();
 list.push("Hello");
 list.push("World");
 list.pop();
